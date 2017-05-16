@@ -5,15 +5,15 @@ var words = ['falcons', 'panthers',  'patriots', 'chargers', 'saints'];
 function chooseWord () {
   return words[Math.floor(Math.random() * words.length)];
 }
-
+var spacesArray = [];
 function blanksFromAnswer ( word ) {
   var line = " _ ";
   var wordArray = word.split("");
-  var html = "";
+  
   for ( i = 0; i < wordArray.length; i++ ) {
-    html = html + line;
+    spacesArray.push(line);
   }
-  return html;
+  return spacesArray;
 }
 
 function alterAt ( n, c, originalString ) {
@@ -30,20 +30,35 @@ function guessLetter( letter, shown, answer ) {
   return shown;
 }
 var answerWord = chooseWord();
-document.getElementById("wordCount").innerHTML = blanksFromAnswer(answerWord);
+document.getElementById("wordCount").innerHTML = blanksFromAnswer(answerWord).join("")
 // document.getElementById("wordCount").innerHTML = "TESTING!";
 document.getElementById("WORD").innerHTML = answerWord;
 
+
 var userKeyElement = document.getElementById("userKey");
 var keysPressed = [];
+var correctGuesses = [];
 
-document.onkeyup = function (event) {
+ document.onkeyup = function (event) {
     var userKey = event.key;
-  keysPressed.push(userKey);
+    // console.log(keysPressed);
 
-    userKeyElement.innerHTML = keysPressed.join(', ');
+    if (keysPressed.indexOf(userKey) === -1 ) {
+      keysPressed.push(userKey);
+      // console.log(keysPressed);
+      userKeyElement.innerHTML = keysPressed.join(', ');
+
+      for (var i = 0; i < answerWord.length; i++) {
+        // If the guessed letter is in the solution, and we haven't guessed it already..
+        if ((userKey === answerWord[i]) && (correctGuesses.indexOf(userKey) === -1)) {
+          // Push the newly guessed letter into the correctGuesses array.
+          correctGuesses.push(userKey);
+          console.log("Correct Guesses " + correctGuesses.join(", "));
+        }
+      }
+    }
 }
-
+ 
 
 var blanksResult = blanksFromAnswer(answerWord);
 
