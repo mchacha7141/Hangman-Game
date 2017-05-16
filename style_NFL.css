@@ -1,0 +1,54 @@
+header {
+	padding-top: 30px;
+	padding-bottom: 0%;
+}
+
+
+body {
+	margin: 0 auto;
+	background-color: black;
+	font-family: arial;
+}
+.main_container {
+	width: 800px;
+	min-height: 560px;
+	border: 3px dashed white;
+	margin: auto;
+	margin-top: 50px;
+	padding color: brown;
+	font color: white;
+}
+.container_left {
+	color: white;
+	font-color: white;
+	width: 375px;
+	min-height: 500px;
+	border: 2px solid black;
+	float: left;
+	background-color: green;
+
+	}
+.lg {
+	padding-top: 75%;
+}
+#userKey{
+	color: white;
+	padding-bottom: 20%;
+}
+
+
+.container_right{
+	width: 375px;
+	min-height: 500px;
+	border: 2px solid white;
+	float: right;
+	background-color: green;
+	color: white;
+	font-color: white;
+	}
+#wordCount{
+	color: white;
+	padding-bottom: : 30%;
+	
+}
+
